@@ -25,7 +25,7 @@ const toggleMenu = () => {
           <a href="#" class="text-white hover:text-crypto-blue transition-colors">Home</a>
           <a href="#blocks" class="text-white hover:text-crypto-blue transition-colors">Blocks</a>
           <a href="#about" class="text-white hover:text-crypto-blue transition-colors">About</a>
-          <a href="https://github.com/yourusername/crypto-blockchain-generator" target="_blank" class="text-white hover:text-crypto-blue transition-colors">
+          <a href="https://github.com/nandasafiqalfiansyah/web-blockhain" target="_blank" class="text-white hover:text-crypto-blue transition-colors">
             GitHub
           </a>
         </div>

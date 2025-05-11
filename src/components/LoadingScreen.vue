@@ -44,7 +44,7 @@ const startLoading = () => {
           <div class="w-24 h-24 border-8 border-crypto-blue border-t-crypto-purple rounded-full animate-spin"></div>
         </div>
         
-        <h1 class="text-3xl font-bold mb-4">CryptoChain</h1>
+        <h1 class="text-3xl font-bold mb-4 ">CryptoChain</h1>
         
         <div class="w-full bg-crypto-dark rounded-full h-4 mb-6">
           <div 
@@ -103,3 +103,6 @@ const startLoading = () => {
   }
   75% {
     transform: translateY(-35px) translateX(30px);
+  }
+}
+</style>

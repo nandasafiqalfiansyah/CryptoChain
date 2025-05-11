@@ -18,6 +18,12 @@ const addBlock = (data: string) => {
   blockchain.value.addBlock(data);
 };
 
+const handleClearAllBlocks = () => {
+  if (!confirm('Are you sure you want to clear all blocks? This will reset the blockchain to genesis block.')) {
+   return;
+  }
+  blockchain.value.clearAllBlocks();
+};
 onMounted(() => {
   // Simulate loading time
   setTimeout(() => {
@@ -115,9 +121,8 @@ onMounted(() => {
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-1">
               <BlockchainStats :blockchain="blockchain" />
-              <BlockForm @add-block="addBlock" />
+              <BlockForm @add-block="addBlock" @clearAllBlocks="handleClearAllBlocks" />
             </div>
-            
             <div class="lg:col-span-2">
               <div class="glass-card p-6">
                 <h3 class="text-2xl font-bold mb-6 bg-transparent text-white">Block Explorer</h3>
@@ -248,7 +253,7 @@ onMounted(() => {
             </div>
             
             <div class="text-crypto-gray text-sm">
-              &copy; {{ new Date().getFullYear() }} CryptoChain. All rights reserved.
+              &copy; {{ new Date().getFullYear() }}(21533401) Nanda Safiq Alfiansyah. All rights reserved.
             </div>
             
             <div class="flex space-x-4 mt-4 md:mt-0">

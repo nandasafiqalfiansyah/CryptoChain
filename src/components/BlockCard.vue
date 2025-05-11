@@ -7,6 +7,7 @@ const props = defineProps<{
   isLast: boolean;
 }>();
 
+
 const expanded = ref(false);
 
 const toggleExpand = () => {
@@ -27,11 +28,6 @@ const headerClass = computed(() => {
   return 'bg-crypto-blue/20';
 });
 
-const truncateHash = (hash: string) => {
-  if (!hash) return '';
-  if (hash.length <= 15) return hash;
-  return `${hash.substring(0, 10)}...${hash.substring(hash.length - 5)}`;
-};
 </script>
 
 <template>
@@ -139,6 +135,16 @@ const truncateHash = (hash: string) => {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.scale-102:hover {
-  transform: s
-  
+.block-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  border-radius: 8px;
+}
+.hash-text {
+  word-break: break-all;
+  font-family: monospace;
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+</style>

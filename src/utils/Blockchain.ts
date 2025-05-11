@@ -44,15 +44,38 @@ export class Block {
   getFormattedDate(): string {
     return new Date(this.timestamp).toLocaleString();
   }
+
+  // Metode untuk mengkonversi Block ke object biasa (serialisasi)
+  toObject(): any {
+    return {
+      index: this.index,
+      timestamp: this.timestamp,
+      data: this.data,
+      previousHash: this.previousHash,
+      hash: this.hash,
+      nonce: this.nonce
+    };
+  }
+
+  // Metode statis untuk membuat Block dari object (deserialisasi)
+  static fromObject(obj: any): Block {
+    const block = new Block(obj.index, obj.timestamp, obj.data, obj.previousHash);
+    block.hash = obj.hash;
+    block.nonce = obj.nonce;
+    return block;
+  }
 }
 
 export class Blockchain {
   chain: Block[];
   difficulty: number;
+  storageKey: string;
 
-  constructor() {
-    this.chain = [this.createGenesisBlock()];
+  constructor(storageKey = 'blockchain') {
+    this.storageKey = storageKey;
     this.difficulty = 2;
+    const loaded = this.loadFromStorage();
+    this.chain = loaded ? loaded : [this.createGenesisBlock()];
   }
 
   createGenesisBlock(): Block {
@@ -72,8 +95,13 @@ export class Blockchain {
     newBlock.mineBlock(this.difficulty);
     this.chain.push(newBlock);
     
+    // Simpan ke local storage setiap kali menambahkan block baru
+    this.saveToStorage();
+    
     return newBlock;
   }
+
+
 
   isChainValid(): boolean {
     for (let i = 1; i < this.chain.length; i++) {
@@ -91,6 +119,39 @@ export class Blockchain {
       }
     }
     return true;
+  }
+
+  // Metode untuk menyimpan blockchain ke local storage
+  saveToStorage(): void {
+    const chainData = this.chain.map(block => block.toObject());
+    localStorage.setItem(this.storageKey, JSON.stringify({
+      chain: chainData,
+      difficulty: this.difficulty
+    }));
+  }
+
+  // Metode untuk memuat blockchain dari local storage
+  loadFromStorage(): Block[] | null {
+    const data = localStorage.getItem(this.storageKey);
+    if (!data) return null;
+
+    try {
+      const parsed = JSON.parse(data);
+      this.difficulty = parsed.difficulty || 2;
+      return parsed.chain.map((blockData: any) => Block.fromObject(blockData));
+    } catch (e) {
+      console.error('Failed to parse blockchain from storage', e);
+      return null;
+    }
+  }
+
+  // Metode untuk menghapus blockchain dari local storage
+  clearAllBlocks(): void {
+
+    alert('Blockchain cleared!');
+    localStorage.removeItem(this.storageKey);
+    this.chain = [this.createGenesisBlock()];
+    this.difficulty = 2;
   }
 }
 
