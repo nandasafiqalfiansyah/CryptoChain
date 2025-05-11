@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --crypto-dark: #0F172A;
+  --crypto-darker: #020617;
+  --crypto-blue: #00BFFF;
+  --crypto-purple: #8A2BE2;
+  --crypto-green: #00FA9A;
+  --crypto-red: #FF3E4D;
+  --crypto-yellow: #FFD700;
+  --crypto-gray: #64748B;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    
+    color-scheme: dark;
+    color: rgba(255, 255, 255, 0.95);
+    background-color: var(--crypto-darker);
+    
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    background: linear-gradient(90deg, var(--crypto-blue), var(--crypto-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-crypto-blue text-white hover:bg-opacity-80;
+  }
+  
+  .btn-secondary {
+    @apply bg-crypto-purple text-white hover:bg-opacity-80;
+  }
+  
+  .glass-card {
+    @apply bg-crypto-dark/70 backdrop-blur-lg rounded-xl border border-crypto-blue/20 shadow-lg;
+  }
+  
+  .block-card {
+    @apply glass-card p-6 transition-all duration-500 hover:shadow-neon-blue;
+  }
+  
+  .hash-text {
+    @apply font-mono text-xs overflow-hidden text-ellipsis;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--crypto-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--crypto-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--crypto-blue);
+}
+
+/* Animation for loading screen */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
