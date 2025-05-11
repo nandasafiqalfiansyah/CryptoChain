@@ -1,6 +1,6 @@
 # Crypto Blockchain Generator
 
-![Project Banner](https://via.placeholder.com/1200x400?text=Crypto+Blockchain+Generator)  
+![Project Banner](./public/image.png)  
 *A Vue 3 based blockchain simulator for educational purposes*
 
 ## 📖 Table of Contents
