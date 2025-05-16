@@ -60,10 +60,10 @@ onMounted(() => {
                 
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                   <a 
-                    href="#blocks"
+                    href="https://tiny-heliotrope-85a25d.netlify.app/"
                     class="btn btn-primary px-6 py-3"
                   >
-                    Get Started
+                    Get Started V2
                   </a>
                   
                   <a 
