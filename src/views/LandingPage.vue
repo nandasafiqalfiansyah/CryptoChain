@@ -62,6 +62,7 @@ onMounted(() => {
                   <a 
                     href="https://tiny-heliotrope-85a25d.netlify.app/"
                     class="btn btn-primary px-6 py-3"
+                    target="_blank"
                   >
                     Get Started V2
                   </a>
